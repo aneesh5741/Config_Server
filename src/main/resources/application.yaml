@@ -1,0 +1,28 @@
+server:
+ port: 8888 
+ 
+spring:
+ cloud:
+  config:
+   server:
+    git:
+     tryMasterBranch: false
+     defaultLabel: resources_345
+     uri: https://github.com/aneesh5741/vms-resources.git
+     search-paths:
+     - 'customerms*'
+    encrypt:
+     enabled: false              # by default its true to decrpyt on server side but can do on client side if its false ans key is added to client side
+      
+     
+encrypt:
+  key: ANDKANDOFPR
+     
+     
+     
+
+     
+# it will application.properties only if main has that file, if none configuration file name matches 
+
+#RESOURCES
+#1. https://docs.spring.io/spring-cloud-config/docs/current/reference/html/#_placeholders_in_git_search_paths
