@@ -1,7 +1,11 @@
 server:
- port: 8888 
+ port: 8585
+ 
+
  
 spring:
+ application:
+  name: configserver
  cloud:
   config:
    server:
@@ -12,16 +16,35 @@ spring:
      search-paths:
      - 'customerms*'
     encrypt:
-     enabled: false              # by default its true to decrpyt on server side but can do on client side if its false ans key is added to client side
-      
+     enabled: false
+              
+  
      
 encrypt:
   key: ANDKANDOFPR
-     
-     
-     
+  
+
+eureka:
+ instance:
+  instance-id: ${spring.application.name}:${random.port} 
+  hostname: localhost
+  prefer-ip-address: false 
+ client:
+  fetch-registry: false
+  register-with-eureka: true
+  service-url:
+    defaultZone: http://localhost:8181/eureka/
+    
+    
+
+
+
+
 
      
+# by default its true to decrpyt on server side but can do on client side if its false ans key is added to client side
+#         encrypt:
+#     enabled: false  
 # it will application.properties only if main has that file, if none configuration file name matches 
 
 #RESOURCES
